@@ -11,6 +11,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 # install git
 sudo yum install git -y
 # install jenkins
-sudo git clone https://github.com/tunckasik/terraform-modules-jenkins.git /home/ec2-user/jenkins_deployment_terraform
-docker build -t jenkins /home/ec2-user/jenkins/dockerfile
+sudo git clone https://github.com/tunckasik/terraform-modules-jenkins.git
+cd terraform-modules-jenkins
+docker build -t jenkins .
 docker run -p 8080:8080 -p 50000:50000 -d --restart=on-failure -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/datadir:/var/jenkins_home --name jenkins-nodejs-dind jenkins

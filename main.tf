@@ -29,6 +29,7 @@ data "template_file" "userdata" {
 
   ingress {
     description      = "allow HTTP"
+    from_port        = 0
     to_port          = 80
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
@@ -36,6 +37,7 @@ data "template_file" "userdata" {
 
    ingress {
     description      = "allow SSH"
+    from_port        = 0
     to_port          = 22
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
@@ -43,6 +45,7 @@ data "template_file" "userdata" {
 
   ingress {
     description      = "allow Jenkins"
+    from_port        = 0
     to_port          = 8080
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
@@ -50,6 +53,7 @@ data "template_file" "userdata" {
 
   ingress {
     description      = "allow 50000"
+    from_port        = 0
     to_port          = 50000
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
