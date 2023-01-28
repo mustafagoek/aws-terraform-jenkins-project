@@ -16,11 +16,11 @@ data "template_file" "userdata" {
 }
 
  resource "aws_instance" "vm1" {
-  ami           = "ami-0b5eea76982371e91"
-  instance_type = "t2.micro"
+  ami           = "ami-c -"
+  instance_type = "t2.micro" # can be 't3a.medium' if necessary
   vpc_security_group_ids = [aws_security_group.HTTPandSSH.id]
   user_data = data.template_file.userdata.rendered
-  key_name = "dockerkey"
+  key_name = "dockerkey"  #Check this name
  }
 
  resource "aws_security_group" "HTTPandSSH" {
