@@ -7,22 +7,19 @@ Using Terraform,
 The remaining steps will be completed manually as below
 ## To be able to start Jenkins on AWS EC2:
 1. Open your VS Code with terminal and locate your pwd as where your .pem file
-1. Open AWS EC2 instance and find SSH Client page
-1. On terminal, connect to the EC2 through copying below with changing 'yourpassword' to your pem file's name
-    ```
-        ssh -i "yourpassword.pem" ec2-user@ec2-3-88-232-161.compute-1.amazonaws.com
-    ```
+1. Open AWS EC2 instance and find SSH Client page and copy all starts with 'ssh -i ...'
+1. On terminal, connect to the EC2 through copying ssh information
 1. Get docker images and docker containers information. You should see jenkins image is started
     ```
-        docker images -a && docker container ls -a
+        docker images && docker container ls
     ```
-1. Make sure you copy your container name, in my code 'jenkins-nodejs-dind' is the container name. With that **exec**, we execute the container where we started using Jenkins
+1. ifyou used different image your have to change the container name. My container's name is **'jenkins-nodejs-dind'**. Here we used **exec** to be able to execute the container where we started using Jenkins
     ```
         docker exec -it jenkins-nodejs-dind /bin/bash
     ```
-1. Copy the below on your opened container cli, if it doesn't work delete 'sudo'
+1. on the terminal, copy the below on your opened container cli, if it doesn't work add 'sudo' before the *cat*
     ```
-        sudo cat /var/jenkins_home/secrets/initialAdminPassword
+        cat /var/jenkins_home/secrets/initialAdminPassword
     ```
 1. Get the output and copy to your Jenkins entry page as your password
 
