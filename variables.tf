@@ -1,3 +1,6 @@
 variable "ec2_name" {
-  default = "EC2-jenkins"
+  default = "bronze"
+}
+variable "key_name" {
+  default = "dockerkey" #change here
 }

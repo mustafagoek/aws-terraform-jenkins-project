@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      version = "2.36.0"
+      version = "~> 4.0"
     }
   }
 }
@@ -20,12 +20,11 @@ data "template_file" "userdata" {
   instance_type = "t2.micro" # can be 't3a.medium' if necessary
   vpc_security_group_ids = [aws_security_group.HTTPandSSH.id]
   user_data = data.template_file.userdata.rendered
-  key_name = "dockerkey"  #Check this name
+  key_name = var.key_name  #Check this name
   tags = {
-    "instance_name" = var.ec2_name
-  }
+    Name = "${var.ec2_name}-ec2-jenkins"
  }
-
+ }
  resource "aws_security_group" "HTTPandSSH" {
   name        = "HTTPandSSH@JenkinsEC2"
   description = "Allow HTTP and SSH inbound traffic"
