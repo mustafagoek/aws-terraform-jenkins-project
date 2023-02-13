@@ -1,6 +1,6 @@
 variable "ec2_name" {
-  default = "bronze"
+  default = "gokmus01"
 }
 variable "key_name" {
-  default = "dockerkey" #change here
+  default = "mgokeur" #change here
 }
